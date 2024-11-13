@@ -1,0 +1,418 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TextClassification",
+  "type": "object",
+  "properties": {
+    "Descrip":{
+      "type":"string",
+      "description":"3 sentences of what you infer from the text input data"
+    },
+    "Phishing": {
+      "type": "object",
+      "properties": {
+        "isPhishing": {
+          "type": "boolean",
+          "description": "Indicates if text may contain phishing characteristics."
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Confidence level of phishing likelihood."
+        }
+      }
+    },
+    "Fraudulent": {
+      "type": "object",
+      "properties": {
+        "isFraudulent": {
+          "type": "boolean",
+          "description": "Marks if the text has signs of fraud or deception."
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "Warning": {
+      "type": "object",
+      "properties": {
+        "isWarning": {
+          "type": "boolean",
+          "description": "True if the text contains warning signals or alerts."
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "ThreateningTone": {
+      "type": "object",
+      "properties": {
+        "isThreatening": {
+          "type": "boolean",
+          "description": "Flags if the tone appears threatening or intimidating."
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "Malicious": {
+      "type": "object",
+      "properties": {
+        "isMalicious": {
+          "type": "boolean",
+          "description": "Indicates if the text may have malicious intent."
+        },
+        "confidenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "SentimentAndTone": {
+      "type": "object",
+      "properties": {
+        "Sentiment": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "neutral",
+            "negative"
+          ],
+          "description": "Overall sentiment."
+        },
+        "Tone": {
+          "type": "string",
+          "description": "General tone of the text, e.g., 'formal', 'casual', 'urgent'."
+        },
+        "SentimentScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "ToneScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "Emotion": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "fear",
+              "anxiety",
+              "anger",
+              "joy",
+              "sadness",
+              "trust",
+              "disgust",
+              "surprise"
+            ]
+          },
+          "intensity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      },
+      "description": "List of emotions present in the text."
+    },
+    "LanguageStyle": {
+      "type": "object",
+      "properties": {
+        "style": {
+          "type": "string",
+          "description": "Describes the writing style, e.g., 'technical', 'persuasive', 'narrative'."
+        },
+        "formalityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "BehavioralCues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Behaviors indicated, e.g., 'urgency', 'scarcity'."
+          },
+          "strength": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "Legitimacy": {
+      "type": "object",
+      "properties": {
+        "isLegitimate": {
+          "type": "boolean",
+          "description": "True if the text seems legitimate."
+        },
+        "trustworthinessScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "PsychologicalTriggers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "type": "string",
+            "enum": [
+              "fear",
+              "authority",
+              "urgency",
+              "social proof"
+            ],
+            "description": "Triggers used in the text."
+          },
+          "triggerStrength": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "Formatting": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "all caps",
+              "bold",
+              "italic",
+              "exclamation marks",
+              "underline",
+              "strikethrough"
+            ],
+            "description": "Formatting styles used."
+          },
+          "frequency": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "Intent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "inform",
+            "persuade",
+            "warn",
+            "scam",
+            "phish"
+          ],
+          "description": "Primary purpose of the text."
+        },
+        "intentScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "Keywords": {
+      "type": "object",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relevanceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "WritingPatterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "description": "Patterns such as 'repetition', 'call-to-action'."
+          },
+          "patternScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    },
+    "AudienceTargeting": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "enum": [
+            "general",
+            "specific group",
+            "individual"
+          ]
+        },
+        "targetingScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "PolitenessLevel": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "polite",
+            "neutral",
+            "rude"
+          ]
+        },
+        "politenessScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "ScarcityOrUrgencyCues": {
+      "type": "object",
+      "properties": {
+        "isPresent": {
+          "type": "boolean"
+        },
+        "urgencyScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "Personalization": {
+      "type": "object",
+      "properties": {
+        "isPersonalized": {
+          "type": "boolean"
+        },
+        "personalizationScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "FormalityLevel": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "formal",
+            "semi-formal",
+            "informal"
+          ]
+        },
+        "formalityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "CulturalReferences": {
+      "type": "object",
+      "properties": {
+        "isPresent": {
+          "type": "boolean"
+        },
+        "culturalReferenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "LanguageAnomalies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Anomalies such as 'spelling errors', 'unusual grammar'."
+          },
+          "anomalyScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "Phishing",
+    "Fraudulent",
+    "Warning",
+    "ThreateningTone",
+    "Malicious",
+    "SentimentAndTone",
+    "Emotion",
+    "LanguageStyle",
+    "BehaviouralCues",
+    "Legitimacy",
+    "PsychologicalTriggers",
+    "Intent",
+    "Keywords",
+    "WritingPatterns",
+    "AudienceTargeting",
+    "PolitenessLevel",
+    "ScarcityOrUrgency",
+    "Personalization",
+    "FormalityLevel",
+    "CulturalReferences",
+    "LanguageAnomalies",
+    "Descrip"
+  ]
+}
