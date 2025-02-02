@@ -1,17 +1,24 @@
 {
-  "name": "backend",
+  "name": "aishell",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "AI-powered Linux command helper",
+  "main": "aiCaller.js",
+  "bin": {
+    "aishell": "aiCaller.js"
+  },
   "scripts": {
+    "start": "node aiCaller.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "chalk": "^5.0.1",
+    "clipboardy": "^2.4.0",
+    "commander": "^10.0.1",
+    "dotenv": "^10.0.0",
+    "groq-sdk": "^0.8.0",
     "express": "^4.21.1",
-    "groq-sdk": "^0.8.0"
-  }
+    "cors": "^2.8.5"
+  },
+  "author": "",
+  "license": "ISC"
 }

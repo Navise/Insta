@@ -51,8 +51,7 @@ const InputForm = () => {
         </button>
       </form>
 
-      {/* Conditionally render ResultCard if result is populated */}
-      {result && <ResultCard data={result} />}
+      <ResultCard data={result}/>
     </div>
   );
 };

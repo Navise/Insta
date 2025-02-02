@@ -1,11 +1,11 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  
   "title": "TextClassification",
   "type": "object",
   "properties": {
     "Descrip":{
       "type":"string",
-      "description":"3 sentences of what you infer from the text input data"
+      "description":"sentences of what you infer from the text input data"
     },
     "Phishing": {
       "type": "object",
@@ -27,7 +27,7 @@
       "properties": {
         "isFraudulent": {
           "type": "boolean",
-          "description": "Marks if the text has signs of fraud or deception."
+          "description": "Mark if the text has signs of fraud or deception."
         },
         "confidenceScore": {
           "type": "number",
